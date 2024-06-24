@@ -18,6 +18,7 @@ public class Identity {
     @Id
     int uniqueId;
 
+
     @Enumerated(EnumType.STRING)
     IdentityType identityType;
 
