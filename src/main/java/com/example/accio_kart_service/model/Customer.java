@@ -12,13 +12,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-    @Table(name = "customer")
+@Table(name = "customer")
 public class Customer {
 
     @Id
