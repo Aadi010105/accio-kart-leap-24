@@ -6,8 +6,6 @@ import com.example.accio_kart_service.model.Customer;
 import com.example.accio_kart_service.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -49,5 +47,13 @@ public class CustomerService {
 
     public List<Customer> getAllByGenderAndAge(Gender gender, int age) {
         return customerRepository.findByGenderAndAge(gender, age);
+    }
+
+    public int getCountOfAgeGreaterThan(int age) {
+        return customerRepository.getCountOfAgeGreaterThan(age);
+    }
+
+    public int getCountOfGender(Gender gender) {
+        return customerRepository.getCountOfGender(gender);
     }
 }
