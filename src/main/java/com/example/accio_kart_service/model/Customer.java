@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.ArrayList;
@@ -48,4 +49,9 @@ public class Customer {
     @OneToOne(cascade =CascadeType.ALL)
     @JoinColumn(name = "identity_id")
     Identity identity;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name ="customer_id")
+    List<OrderEntity> orders=new ArrayList<>();
+
 }

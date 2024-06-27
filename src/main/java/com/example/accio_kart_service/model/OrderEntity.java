@@ -1,7 +1,5 @@
 package com.example.accio_kart_service.model;
 
-
-import com.example.accio_kart_service.Enum.IdentityType;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -12,16 +10,16 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @Getter
 @Setter
-@Table(name = "identity")
-public class Identity {
+@Table(name = "order_entity")
+public class OrderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int Id;
+    int id;
 
+    String orderId;
 
-    @Enumerated(EnumType.STRING)
-    IdentityType identityType;
+    double totalValue;
 
-    String identityNumber;
+    int numberOfItems;
 }
