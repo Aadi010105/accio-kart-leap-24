@@ -1,7 +1,10 @@
 package com.example.accio_kart_service.controller;
 
 import com.example.accio_kart_service.Enum.Gender;
+import com.example.accio_kart_service.dto.request.CustomerRequest;
+import com.example.accio_kart_service.dto.response.CustomerResponse;
 import com.example.accio_kart_service.model.Customer;
+import com.example.accio_kart_service.repository.CustomerRepository;
 import com.example.accio_kart_service.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,12 +27,12 @@ public class CustomerController {
 
 
     @PostMapping("/add")
-    public Customer addCustomer(@RequestBody Customer customer){
-        return customerService.addCustomer(customer);
+    public CustomerResponse addCustomer(@RequestBody CustomerRequest customerRequest){
+        return customerService.addCustomer(customerRequest);
     }
 
     @GetMapping("/get/id/{id}")
-    public Customer getCustomer(@PathVariable("id") int customerId){
+    public CustomerResponse getCustomer(@PathVariable("id") int customerId){
         return customerService.getCustomer(customerId);
     }
 
@@ -45,7 +48,7 @@ public class CustomerController {
 
     //give all the customer of a particular gender and age-->all males of AGE 25
     @GetMapping("/get-by-gender-age")
-    public List<Customer> getAllByGenderAndAge(@RequestParam("gender") Gender gender,
+    public List<CustomerResponse> getAllByGenderAndAge(@RequestParam("gender") Gender gender,
                                                @RequestParam("age") int age){
         return customerService.getAllByGenderAndAge(gender,age);
     }
