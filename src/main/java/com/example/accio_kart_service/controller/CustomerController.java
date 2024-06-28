@@ -7,6 +7,8 @@ import com.example.accio_kart_service.model.Customer;
 import com.example.accio_kart_service.repository.CustomerRepository;
 import com.example.accio_kart_service.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,8 +34,9 @@ public class CustomerController {
     }
 
     @GetMapping("/get/id/{id}")
-    public CustomerResponse getCustomer(@PathVariable("id") int customerId){
-        return customerService.getCustomer(customerId);
+    public ResponseEntity<CustomerResponse> getCustomer(@PathVariable("id") int customerId){
+        CustomerResponse customerResponse= customerService.getCustomer(customerId);
+        return new ResponseEntity<>(customerResponse, HttpStatus.FOUND);
     }
 
     @GetMapping("/get-all")

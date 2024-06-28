@@ -21,9 +21,9 @@ public class Seller {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    String name;
-
     String uniqueSellerNumber;
+
+    String name;
 
     @Column(unique = true)
     String mobileNumber;
@@ -31,5 +31,5 @@ public class Seller {
     int age;
 
     @OneToMany(mappedBy = "seller",cascade = CascadeType.ALL)
-    List<Product> products=new ArrayList<>();
+    List<Product> products = new ArrayList<>();
 }
