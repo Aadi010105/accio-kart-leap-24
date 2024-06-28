@@ -25,6 +25,7 @@ public interface CustomerRepository extends JpaRepository<Customer,Integer> {
    @Query("select count(c) from Customer c where c.gender = :g")
    int getCountOfGender(@Param("g") Gender gender);
 
+
 //   @Query(value = "select count(*) from customer where gender = :g", nativeQuery = true)
 //   int getCountOfGender(@Param("g") String gender);   //As A SQL QUERY--->>But CONFUSIONSSS
 

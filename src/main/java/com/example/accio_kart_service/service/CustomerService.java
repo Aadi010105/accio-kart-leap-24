@@ -73,4 +73,13 @@ public class CustomerService {
     public int getCountOfGender(Gender gender) {
         return customerRepository.getCountOfGender(gender);
     }
+
+    public void deleteCustomer(String emailId) {
+        Optional<Customer> optionalCustomer = customerRepository.findByEmailId(emailId);
+        if(optionalCustomer.isEmpty()){
+            throw new CustomerNotFoundException("Customer doesn't exisit");
+        }
+        // deletes customer, its identity and its orders--->>>DUE to CASCADE.ALl
+        customerRepository.delete(optionalCustomer.get());
+    }
 }
