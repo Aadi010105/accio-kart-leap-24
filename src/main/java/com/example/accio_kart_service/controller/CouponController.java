@@ -3,10 +3,7 @@ package com.example.accio_kart_service.controller;
 import com.example.accio_kart_service.service.CouponService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/coupon")
@@ -23,5 +20,14 @@ public class CouponController {
                                             @RequestParam("discount") double percentageDiscount){
         couponService.addCoupon(couponCode,percentageDiscount);
         return new ResponseEntity<>("Coupon added successfully", HttpStatus.CREATED);
+    }
+
+    @PutMapping("/assign")
+    public ResponseEntity<String> assignCoupon(@RequestParam("email") String emailId,
+                                               @RequestParam("code") String couponCode){
+
+
+        String message = couponService.assignCoupon(emailId, couponCode);
+        return new ResponseEntity<>(message,HttpStatus.ACCEPTED);
     }
 }
