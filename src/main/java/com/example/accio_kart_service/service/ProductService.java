@@ -32,7 +32,7 @@ public class ProductService {
 
         Product product = ProductTransformer.productRequestToProduct(productRequest);
 
-        // setting both the
+        // setting both them
         product.setSeller(seller);
         seller.getProducts().add(product);
 
